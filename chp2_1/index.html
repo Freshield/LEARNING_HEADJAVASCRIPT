@@ -6,11 +6,18 @@
     <link rel="stylesheet" type="text/css" href="donuts.css"/>
 
     <script type="text/javascript">
+        function parseDonuts(donutString){
+            var numDonuts = parseInt(donutString);
+            if(donutString.indexOf("dozen") != -1){
+                numDonuts *= 12;
+            }
+            return numDonuts;
+        }
         function updateOrder() {
             const TAXRATE = 0.15;
             const DONUTPRICE = 0.50;
-            var numCakeDonuts = parseInt(document.getElementById("cakedonuts").value);
-            var numGlazedDonuts = parseInt(document.getElementById("glazeddonuts").value);
+            var numCakeDonuts = parseDonuts(document.getElementById("cakedonuts").value);
+            var numGlazedDonuts = parseDonuts(document.getElementById("glazeddonuts").value);
             if(isNaN(numCakeDonuts)){
                 numCakeDonuts = 0;
             }
