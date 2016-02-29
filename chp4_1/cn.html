@@ -5,7 +5,40 @@
     <title>Stick Figure Adventure</title>
     <script type="text/javascript">
         var curScene = 0;
+        var Imgs = new Array(10);
+        var imageIndex = 0;
+        //preload image
+        function preload(){
+            for(var i = 0;i<Imgs.length;i++){
+                Imgs[i] = new Image();
+                downloading(i);
 
+            }
+
+            document.getElementById("sceneimg").src =Imgs[0].src;
+        }
+
+
+
+        //downloading one image
+        function downloading(i){
+            imageIndex = i;
+            Imgs[i].src = "cnscene"+imageIndex+".png";
+            Imgs[i].onload = validateImages(i);
+        }
+
+        //validate if load success
+        function validateImages(i){
+            if(!Imgs[i].complete){
+                window.setTimeout('downloading('+i+')',200);
+            }
+            else if(typeof Imgs[i].naturalWidth != "undefined" && Imgs[i].naturalWidth == 0){
+                window.setTimeout('downloading('+i+')',200);
+            }
+            else{
+
+            }
+        }
 
         function changeScene(decision){
 
@@ -80,75 +113,7 @@
                     break
             }
 
-            /*
-             if(curScene == 0){
-             curScene = 1;
-             message = "Your journey begins at a fork in the road.";
-             }
-             else if(curScene == 1){
-             if(decision == 1){
-             curScene = 2;
-             message = "You have arrived at a cute little house in the woods.";
-             }
-             else{
-             curScene = 3;
-             message = "You are standing on the bridge overlooking a peaceful stream.";
-             }
-             }
-             else if(curScene == 2){
-             if (decision == 1) {
-             curScene = 4;
-             message = "Peeking through the window, you see a witch inside the house.";
-             }
-             else {
-             curScene = 5;
-             message = "Sorry, a witch lives in the house and you just became part of her stew.";
-             }
-             }
-             else if(curScene == 3){
-             if (decision == 1) {
-             curScene = 6;
-             message = "Sorry, a troll lives on the other side of the bridge and you just became his lunch.";
-             }
-             else {
-             curScene = 7;
-             message = "Your stare is interrupted by the arrival of a huge troll.";
-             }
-             }
-             else if (curScene == 4) {
-             if (decision == 1) {
-             curScene = 8;
-             }
-             else {
-             curScene = 5;
-             message = "Sorry, you became part of the witch's stew.";
-             }
-             }
-             else if (curScene == 5) {
-             curScene = 0;
-             }
-             else if (curScene == 6) {
-             curScene = 0;
-             }
-             else if (curScene == 7) {
-             if (decision == 1) {
-             curScene = 6;
-             message = "Sorry, you became the troll's tasty lunch.";
-             }
-             else {
-             curScene = 9;
-             }
-             }
-             else if (curScene == 8) {
-             //TO BE CONTINUED
-             curScene = 0;
-             }
-             else if (curScene == 9) {
-             //TO BE CONTINUED
-             curScene = 0;
-             }*/
-
-            document.getElementById("sceneimg").src = "cnscene" + curScene + ".png";
+            document.getElementById("sceneimg").src =Imgs[curScene].src; //"cnscene" + curScene + ".png";
             if(message != ""){
                 alert(message);
             }
@@ -162,7 +127,7 @@
 
 
 </head>
-<body>
+<body onload="preload();">
 <div style="margin-top:100px; text-align:center">
     <img id="sceneimg" src="cnscene0.png" alt="Stick Figure Adventure" /><br />
     Please choose:
