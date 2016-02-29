@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Stick Figure Adventure</title>
+    <script type="text/javascript">
+        var curScene = 0;
+
+
+        function changeScene(decision){
+
+            var message = "";
+
+            switch(curScene){
+                case 0:
+                    curScene = 1;
+                    message = "你走在乡间的小路上";
+                    break
+                case 1:
+                    if(decision == 1){
+                        curScene = 2;
+                        message = "你到达了一个小木屋";
+                    }
+                    else{
+                        curScene = 3;
+                        message = "你站在桥上看着平静的溪流";
+                    }
+                    break
+                case 2:
+                    if (decision == 1) {
+                        curScene = 4;
+                        message = "透过窗户你看到了一个女巫";
+                    }
+                    else {
+                        curScene = 5;
+                        message = "哈 你被女巫拿来煮汤了";
+                    }
+                    break
+                case 3:
+                    if (decision == 1) {
+                        curScene = 6;
+                        message = "哈 一个怪物在桥对面 你被当成午餐了";
+                    }
+                    else {
+                        curScene = 7;
+                        message = "你面前有一个庞然大物";
+                    }
+                    break
+                case 4:
+                    if (decision == 1) {
+                        curScene = 8;
+                    }
+                    else {
+                        curScene = 5;
+                        message = "哈 你被女巫煮汤了";
+                    }
+                    break
+                case 5:
+                    curScene = 0;
+                    break
+                case 6:
+                    curScene = 0;
+                    break
+                case 7:
+                    if (decision == 1) {
+                        curScene = 6;
+                        message = "哈 你被当成怪物的午餐了";
+                    }
+                    else {
+                        curScene = 9;
+                    }
+                    break
+                case 8:
+//TO BE CONTINUED
+                    curScene = 0;
+                    break
+                case 9:
+//TO BE CONTINUED
+                    curScene = 0;
+                    break
+            }
+
+            /*
+             if(curScene == 0){
+             curScene = 1;
+             message = "Your journey begins at a fork in the road.";
+             }
+             else if(curScene == 1){
+             if(decision == 1){
+             curScene = 2;
+             message = "You have arrived at a cute little house in the woods.";
+             }
+             else{
+             curScene = 3;
+             message = "You are standing on the bridge overlooking a peaceful stream.";
+             }
+             }
+             else if(curScene == 2){
+             if (decision == 1) {
+             curScene = 4;
+             message = "Peeking through the window, you see a witch inside the house.";
+             }
+             else {
+             curScene = 5;
+             message = "Sorry, a witch lives in the house and you just became part of her stew.";
+             }
+             }
+             else if(curScene == 3){
+             if (decision == 1) {
+             curScene = 6;
+             message = "Sorry, a troll lives on the other side of the bridge and you just became his lunch.";
+             }
+             else {
+             curScene = 7;
+             message = "Your stare is interrupted by the arrival of a huge troll.";
+             }
+             }
+             else if (curScene == 4) {
+             if (decision == 1) {
+             curScene = 8;
+             }
+             else {
+             curScene = 5;
+             message = "Sorry, you became part of the witch's stew.";
+             }
+             }
+             else if (curScene == 5) {
+             curScene = 0;
+             }
+             else if (curScene == 6) {
+             curScene = 0;
+             }
+             else if (curScene == 7) {
+             if (decision == 1) {
+             curScene = 6;
+             message = "Sorry, you became the troll's tasty lunch.";
+             }
+             else {
+             curScene = 9;
+             }
+             }
+             else if (curScene == 8) {
+             //TO BE CONTINUED
+             curScene = 0;
+             }
+             else if (curScene == 9) {
+             //TO BE CONTINUED
+             curScene = 0;
+             }*/
+
+            document.getElementById("sceneimg").src = "cnscene" + curScene + ".png";
+            if(message != ""){
+                alert(message);
+            }
+
+
+        }
+
+
+    </script>
+
+
+
+</head>
+<body>
+<div style="margin-top:100px; text-align:center">
+    <img id="sceneimg" src="cnscene0.png" alt="Stick Figure Adventure" /><br />
+    Please choose:
+    <input type="button" id="decision1" value="1" onclick="changeScene(1)" />
+    <input type="button" id="decision2" value="2" onclick="changeScene(2)" />
+</div>
+
+</body>
+</html>
