@@ -16,8 +16,13 @@
                 userName = prompt("What is your name?","Enter your name here.");
                 if(userName){
                     alert("It is good to meet you, " + userName);
-                    writeCookie("user_Name",userName,1000);
                 }
+                if(navigator.cookieEnabled){
+                    writeCookie("user_Name",userName,1000);
+                }else{
+                    alert("Sorry, you can not use cookie");
+                }
+
 
             }
             clearTimeout(timeID);
@@ -33,12 +38,16 @@
 
         function greetUser(){
 
-            userName = readCookie("user_Name");
-            if(userName){
-                alert("Hello "+userName+", I missed you.");
-            }else{
-                alert("Hello, I am your pet rock.");
+            if(navigator.cookieEnabled){
+                userName = readCookie("user_Name");
             }
+                if(userName){
+                    alert("Hello "+userName+", I missed you.");
+                }else{
+                    alert("Hello, I am your pet rock.");
+                }
+
+
 
         }
 
