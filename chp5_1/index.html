@@ -4,7 +4,11 @@
 	<meta charset="UTF-8">
 	<title></title>
     <script language="javascript">
-        var seats = new Array(false,true,false,true,true,true,false,true,false,true);
+        //var seats = new Array(new Array(9),new Array(9),new Array(9),new Array(9));//false,true,false,true,true,true,false,true,false,true);
+        var seats = [[ false, true, false, true, true, true, false, true, false ],
+            [ false, true, false, false, true, false, true, true, true ],
+            [ true, true, true, true, true, true, false, true, false ],
+            [ true, true, true, false, true, false, false, true, false ]];
         var selSeat = -1;
 
         function initSeats(){
