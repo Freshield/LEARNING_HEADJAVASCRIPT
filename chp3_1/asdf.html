@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+</head>
+<body onresize="myFc()">
+<p>改变浏览器窗口大小试一试！</p>
+<p>窗口大小第 <span id="demo">0</span>次变化</p>
+<script>
+var x = 0;
+function myFc() {
+    var txt = x += 1;
+    document.getElementById("demo").innerHTML = txt;
+}
+</script>
+</body>
+</html>
