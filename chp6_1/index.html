@@ -78,13 +78,9 @@
                 for(var j = 0;j<seats[i].length;j++){
                     if(seats[i][j] && seats[i][j+1] && seats[i][j+2]){
                         selSeat = i;
-                        document.getElementById("seat"+(i*seats[i].length+j)).src = "seat_select.png";
-                        document.getElementById("seat"+(i*seats[i].length+j)).alt = "Your seat";
-                        document.getElementById("seat"+((i*seats[i].length+j)+1)).src = "seat_select.png";
-                        document.getElementById("seat"+((i*seats[i].length+j)+1)).alt = "Your seat";
-                        document.getElementById("seat"+((i*seats[i].length+j)+2)).src = "seat_select.png";
-                        document.getElementById("seat"+((i*seats[i].length+j)+2)).alt = "Your seat";
-
+                        setSeat(i*seats[i].length+j,"select","Your seat");
+                        setSeat(i*seats[i].length+j+1,"select","Your seat");
+                        setSeat(i*seats[i].length+j+2,"select","Your seat");
 
                         var accept = confirm("Seat " + ((i*seats[i].length+j)+1)+"is available. Accept?");
                         if(accept){
@@ -94,12 +90,10 @@
                         }
                         else{
                             selSeat = -1;
-                            document.getElementById("seat"+(i*seats[i].length+j)).src = "seat_avail.png";
-                            document.getElementById("seat"+(i*seats[i].length+j)).alt = "Available seat";
-                            document.getElementById("seat"+((i*seats[i].length+j)+1)).src = "seat_avail.png";
-                            document.getElementById("seat"+((i*seats[i].length+j)+1)).alt = "Available seat";
-                            document.getElementById("seat"+((i*seats[i].length+j)+2)).src = "seat_avail.png";
-                            document.getElementById("seat"+((i*seats[i].length+j)+2)).alt = "Available seat";
+
+                            setSeat(i*seats[i].length+j,"avail","Available seat");
+                            setSeat(i*seats[i].length+j+1,"avail","Available seat");
+                            setSeat(i*seats[i].length+j+2,"avail","Available seat");
 
                         }
 
@@ -111,6 +105,11 @@
 
             }
 
+        }
+
+        function setSeat(seatNum,status,description){
+            document.getElementById("seat"+seatNum).src = "seat_"+status+".png";
+            document.getElementById("seat"+seatNum).alt = description;
         }
         /*<img id="seat0" src="seat_unavail.png" alt="Unavailable" />
          <img id="seat1" src="seat_avail.png" alt="Available" />
