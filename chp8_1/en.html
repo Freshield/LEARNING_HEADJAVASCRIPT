@@ -59,8 +59,8 @@
         function changeScene(decision){
             var sceneDesc = document.getElementById("scenetext");
             var message = "";
-            var Tdecision1 = "Welcome";
-            var Tdecision2 = "To Game";
+            var Tdecision1 = "Start Game";
+            var Tdecision2 = "";
             var button1 = document.getElementById("decision1");
             var button2 = document.getElementById("decision2");
 
@@ -90,6 +90,8 @@
                     if (decision == 1) {
                         curScene = 4;
                         message = "Peeking through the window, you see a witch inside the house.";
+                        Tdecision1 = "Sneak by back";
+                        Tdecision2 = "Wave the witch";
                     }
                     else {
                         curScene = 5;
@@ -108,6 +110,8 @@
                     else {
                         curScene = 7;
                         message = "Your stare is interrupted by the arrival of a huge troll.";
+                        Tdecision1 = "Say Hello to him";
+                        Tdecision2 = "Jump into the stream";
                     }
                     break
                 case 4:
@@ -165,6 +169,13 @@
             replaceNodeText("decision1",Tdecision1);
             replaceNodeText("decision2",Tdecision2);
 
+            if(Tdecision2 == ""){
+                document.getElementById("decision2").style.visibility = "hidden";
+            }
+            else{
+                document.getElementById("decision2").style.visibility = "visible";
+            }
+
             //button1.value = Tdecision1;
             //button2.value = Tdecision2;
 
@@ -194,10 +205,10 @@
     <!--<input type="button" id="decision2" value="To Game" onclick="changeScene(2)" />-->
     <span id="decision1" class="decision" onclick="changeScene(1)"
         onmouseover="this.className = 'decisionhover'"
-        onmouseout="this.className = 'decision'">Start</span>
+        onmouseout="this.className = 'decision'">Start Game</span>
     <span id="decision2" class="decision" onclick="changeScene(2)"
           onmouseover="this.className = 'decisionhover'"
-          onmouseout="this.className = 'decision'">Game</span>
+          onmouseout="this.className = 'decision'" style="visibility: hidden"></span>
 </div>
 
 </body>

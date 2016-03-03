@@ -31,43 +31,63 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="en.html" pinned="false" current-in-tab="true">
+      <file leaf-file-name="en.html" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/en.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.4247191">
-              <caret line="191" column="60" selection-start-line="191" selection-start-column="60" selection-end-line="191" selection-end-column="60" />
+            <state vertical-scroll-proportion="-6.974359">
+              <caret line="191" column="0" selection-start-line="184" selection-start-column="8" selection-end-line="191" selection-end-column="0" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#span#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="scene3.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scene3.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scene2.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scene2.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="scene1.png" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/scene1.png">
-          <provider selected="true" editor-type-id="images">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="cn.html" pinned="false" current-in-tab="false">
+      <file leaf-file-name="cn.html" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/cn.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="13.538462">
+            <state vertical-scroll-proportion="0.5685393">
+              <caret line="192" column="72" selection-start-line="192" selection-start-column="72" selection-end-line="192" selection-end-column="72" />
+              <folding>
+                <element signature="n#style#0;n#span#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scene4.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scene4.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scene5.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scene5.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scene6.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scene6.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="scene7.png" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/scene7.png">
+          <provider selected="true" editor-type-id="images">
+            <state />
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="vivi.html" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/vivi.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="-0.0">
               <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
@@ -88,6 +108,7 @@
       <list>
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/en.html" />
+        <option value="$PROJECT_DIR$/cn.html" />
       </list>
     </option>
   </component>
@@ -164,8 +185,11 @@
       <recent name="D:\MEGA\LEARN_BYSELF\JavaScript\HEADFIRST\chp8_1" />
     </key>
   </component>
-  <component name="RunManager" selected="JavaScript Debug.en.html">
+  <component name="RunManager" selected="JavaScript Debug.cn.html">
     <configuration default="false" name="en.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/chp8_1/en.html">
+      <method />
+    </configuration>
+    <configuration default="false" name="cn.html" type="JavascriptDebugType" factoryName="JavaScript Debug" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/chp8_1/cn.html">
       <method />
     </configuration>
     <configuration default="true" type="DartCommandLineRunConfigurationType" factoryName="Dart Command Line Application">
@@ -200,12 +224,14 @@
     <configuration default="true" type="js.build_tools.gulp" factoryName="Gulp.js">
       <method />
     </configuration>
-    <list size="1">
+    <list size="2">
       <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.en.html" />
+      <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.cn.html" />
     </list>
     <recent_temporary>
-      <list size="1">
-        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.en.html" />
+      <list size="2">
+        <item index="0" class="java.lang.String" itemvalue="JavaScript Debug.cn.html" />
+        <item index="1" class="java.lang.String" itemvalue="JavaScript Debug.en.html" />
       </list>
     </recent_temporary>
   </component>
@@ -250,14 +276,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/cn.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="13.538462">
-          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/scene1.png">
       <provider selected="true" editor-type-id="images">
         <state />
@@ -281,12 +299,51 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/vivi.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scene4.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scene5.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scene6.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/scene7.png">
+      <provider selected="true" editor-type-id="images">
+        <state />
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/en.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.4247191">
-          <caret line="191" column="60" selection-start-line="191" selection-start-column="60" selection-end-line="191" selection-end-column="60" />
+        <state vertical-scroll-proportion="-6.974359">
+          <caret line="191" column="0" selection-start-line="184" selection-start-column="8" selection-end-line="191" selection-end-column="0" />
           <folding>
             <element signature="n#style#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#span#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/cn.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.5685393">
+          <caret line="192" column="72" selection-start-line="192" selection-start-column="72" selection-end-line="192" selection-end-column="72" />
+          <folding>
+            <element signature="n#style#0;n#span#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>

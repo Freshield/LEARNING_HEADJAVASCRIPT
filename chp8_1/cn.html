@@ -3,6 +3,21 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>Stick Figure Adventure</title>
+    <style type="text/css">
+        span.decision {
+            font-weight:bold;
+            border:thin solid #000000;
+            padding:5px;
+            background-color:#DDDDDD;
+        }
+
+        span.decisionhover {
+            font-weight:bold;
+            border:thin solid #000000;
+            padding:5px;
+            background-color:#EEEEEE;
+        }
+    </style>
     <script type="text/javascript">
         var curScene = 0;
         var Imgs = new Array(10);
@@ -43,83 +58,127 @@
         function changeScene(decision){
 
             var message = "";
-
+            var Tdecision1 = "开始游戏";
+            var Tdecision2 = "";
             switch(curScene){
                 case 0:
                     curScene = 1;
                     message = "你走在乡间的小路上";
+                    Tdecision1 = "走小路";
+                    Tdecision2 = "过桥";
                     break
                 case 1:
                     if(decision == 1){
                         curScene = 2;
                         message = "你到达了一个小木屋";
+                        Tdecision1 = "路过";
+                        Tdecision2 = "敲下门";
                     }
                     else{
                         curScene = 3;
                         message = "你站在桥上看着平静的溪流";
+                        Tdecision1 = "走过桥";
+                        Tdecision2 = "跳到水里";
                     }
                     break
                 case 2:
                     if (decision == 1) {
                         curScene = 4;
                         message = "透过窗户你看到了一个女巫";
+                        Tdecision1 = "继续路过";
+                        Tdecision2 = "偷偷看看";
                     }
                     else {
                         curScene = 5;
                         message = "哈 你被女巫拿来煮汤了";
+                        Tdecision1 = "你";
+                        Tdecision2 = "完了";
                     }
                     break
                 case 3:
                     if (decision == 1) {
                         curScene = 6;
                         message = "哈 一个怪物在桥对面 你被当成午餐了";
+                        Tdecision1 = "你";
+                        Tdecision2 = "完了";
                     }
                     else {
                         curScene = 7;
                         message = "你面前有一个庞然大物";
+                        Tdecision1 = "和他打个招呼";
+                        Tdecision2 = "跳到水里";
                     }
                     break
                 case 4:
                     if (decision == 1) {
                         curScene = 8;
+                        message = "未完待续";
+                        Tdecision1 = "未完待续";
+                        Tdecision2 = "";
                     }
                     else {
                         curScene = 5;
                         message = "哈 你被女巫煮汤了";
+                        Tdecision1 = "你";
+                        Tdecision2 = "完了";
                     }
                     break
                 case 5:
                     curScene = 0;
+                    message = "";
                     break
                 case 6:
                     curScene = 0;
+                    message = "";
                     break
                 case 7:
                     if (decision == 1) {
                         curScene = 6;
                         message = "哈 你被当成怪物的午餐了";
+                        Tdecision1 = "你";
+                        Tdecision2 = "完了";
                     }
                     else {
                         curScene = 9;
+                        message = "未完待续";
+                        Tdecision1 = "未完待续";
+                        Tdecision2 = "";
                     }
                     break
                 case 8:
 //TO BE CONTINUED
                     curScene = 0;
+                    message = "";
                     break
                 case 9:
 //TO BE CONTINUED
                     curScene = 0;
+                    message = "";
                     break
             }
 
             document.getElementById("sceneimg").src =Imgs[curScene].src; //"cnscene" + curScene + ".png";
-            if(message != ""){
-                alert(message);
+            replaceNodeText("scenetext",message);
+            replaceNodeText("decision1",Tdecision1);
+            replaceNodeText("decision2",Tdecision2);
+
+            if(Tdecision2 == ""){
+                document.getElementById("decision2").style.visibility = "hidden";
+            }
+            else{
+                document.getElementById("decision2").style.visibility = "visible";
             }
 
 
         }
+        function replaceNodeText(id,newText){
+            var node = document.getElementById(id);
+            while(node.firstChild){
+                node.removeChild(node.firstChild);
+            }
+            node.appendChild(document.createTextNode(newText));
+        }
+
 
 
     </script>
@@ -130,9 +189,16 @@
 <body onload="preload();">
 <div style="margin-top:100px; text-align:center">
     <img id="sceneimg" src="cnscene0.png" alt="Stick Figure Adventure" /><br />
-    Please choose:
-    <input type="button" id="decision1" value="1" onclick="changeScene(1)" />
-    <input type="button" id="decision2" value="2" onclick="changeScene(2)" />
+    <div id="scenetext"></div><br>
+    <span id="vivi" onclick="window.location.href='vivi.html'"> 请</span>选择一个选项:
+    <!--<input type="button" id="decision1" value="Welcome" onclick="changeScene(1)" />-->
+    <!--<input type="button" id="decision2" value="To Game" onclick="changeScene(2)" />-->
+    <span id="decision1" class="decision" onclick="changeScene(1)"
+          onmouseover="this.className = 'decisionhover'"
+          onmouseout="this.className = 'decision'">开始游戏</span>
+    <span id="decision2" class="decision" onclick="changeScene(2)"
+          onmouseover="this.className = 'decisionhover'"
+          onmouseout="this.className = 'decision'" style="visibility: hidden"></span>
 </div>
 
 </body>
