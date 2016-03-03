@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Bannerocity - Personalized Online Sky Banners</title>
+
+    <link rel="stylesheet" type="text/css" href="bannerocity.css" />
+
+    <script type="text/javascript">
+        function validateLength(lowWord,highWord,inputField,helpText){
+            if (inputField.value.length < lowWord || inputField.value.length > highWord) {
+                // The data is invalid, so notify the user
+                if(helpText != null){
+                    helpText.innerHTML = "Please enter a value between "+lowWord+" and "+highWord;
+                }
+                return false;
+            }
+            else{
+                if(helpText != null){
+                    helpText.innerHTML = "";
+                }
+                return true;
+            }
+        }
+        function validateZIPCode(inputField,helpText){
+            var regex = /^\d{5}$/;
+            if(!regex.test(inputField.value)){
+                if(helpText != null){
+                    helpText.innerHTML = "Please enter exactly five digits."
+                }
+                return false;
+            }
+            else{
+                if(helpText != null){
+                    helpText.innerHTML = "";
+                }
+                return true;
+            }
+        }
+        function validateDate(inputField,helpText){
+            if(!validateNonEmpty(inputField,helpText)){
+                return false;
+            }
+            return validateRegEX(/^\d{2}\/\d{2}\/(\d{4}|\d{2})$/,inputField.value,helpText,
+                "Please enter a date like 01/14/1975");
+        }
+        function validateEmail(inputField,helpText){
+            if(!validateNonEmpty(inputField,helpText)){
+                return false
+            }
+
+            return validateRegEX(/^[\w\.-_\+]+@[\w-]+(\.\w{2,4})+$/,inputField.value,helpText,
+                "Please enter a email address like johndoe@acme.com");
+
+        }
+        function validatePhone(inputField,helpText){
+            if(!validateNonEmpty(inputField,helpText)){
+                return false
+            }
+
+            return validateRegEX(/^\d{3}-\d{3}-\d{4}$/,inputField.value,helpText,
+            "Please enter a phone number like 123-456-7890");
+
+        }
+        function validateRegEX(regex,inputStr,helpText,helpMessage){
+            if(!regex.test(inputStr)){
+                if(helpText != null){
+                    helpText.innerHTML = helpMessage;
+                }
+                return false;
+            }
+            else{
+                if(helpText != null){
+                    helpText.innerHTML = "";
+                }
+                return true;
+            }
+        }
+        function validateNonEmpty(inputField,helpText) {
+            // See if the input value contains any text
+            if (inputField.value.length == 0) {
+                // The data is invalid, so notify the user
+               if(helpText != null){
+                   helpText.innerHTML = "Please enter a value.";
+               }
+                return false;
+            }
+            else{
+                if(helpText != null){
+                    helpText.innerHTML = "";
+                }
+                return true;
+            }
+
+
+        }
+
+        function placeOrder(form) {
+            if (validateNonEmpty(form["message"], form["message_help"]) &&
+                validateNonEmpty(form["zipcode"], form["zipcode_help"]) &&
+                validateNonEmpty(form["date"], form["date_help"]) &&
+                validateNonEmpty(form["name"], form["name_help"]) &&
+                validateNonEmpty(form["phone"], form["phone_help"]) &&
+                validateNonEmpty(form["email"], form["email_help"])) {
+                // Submit the order to the server
+                form.submit();
+            } else {
+                alert("I'm sorry but there is something wrong with the order information.");
+            }
+        }
+    </script>
+</head>
+
+<body onload="document.getElementById('message').focus()">
+<div class="heading">
+    <img id="logo" src="logo.png" alt="Bannerocity" />
+</div>
+
+<form name="orderform" action="http://yangyufresh.com/phps/bannerocity.php" method="POST">
+    <div class="field">
+        Enter the banner message:
+        <input id="message" name="message" type="text" size="40"
+               onblur="validateLength(1, 32, this, document.getElementById('message_help'))" />
+        <span id="message_help" class="help"></span>
+    </div>
+    <div class="field">
+        Enter ZIP code of the location:
+        <input id="zipcode" name="zipcode" type="text" size="5"
+               onblur="validateZIPCode(this, document.getElementById('zipcode_help'))" />
+        <span id="zipcode_help" class="help"></span>
+    </div>
+    <div class="field">
+        Enter the date for the message to be shown:
+        <input id="date" name="date" type="text" size="10"
+               onblur="validateDate(this, document.getElementById('date_help'))" />
+        <span id="date_help" class="help"></span>
+    </div>
+    <div class="field">
+        Enter your name:
+        <input id="name" name="name" type="text" size="32"
+               onblur="validateNonEmpty(this, document.getElementById('name_help'))" />
+        <span id="name_help" class="help"></span>
+    </div>
+    <div class="field">
+        Enter your phone number:
+        <input id="phone" name="phone" type="text" size="12"
+               onblur="validatePhone(this, document.getElementById('phone_help'))" />
+        <span id="phone_help" class="help"></span>
+    </div>
+    <div class="field">
+        Enter your email address:
+        <input id="email" name="email" type="text" size="32"
+               onblur="validateEmail(this, document.getElementById('email_help'))" />
+        <span id="email_help" class="help"></span>
+    </div>
+    <input type="button" value="Order Banner" onclick="placeOrder(this.form);" />
+</form>
+</body>
+</html>
