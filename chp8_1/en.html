@@ -21,7 +21,7 @@
     <script type="text/javascript">
 
 
-
+        alert("script load");
         var curScene = 0;
         var Imgs = new Array(10);
         var imageIndex = 0;
@@ -196,7 +196,7 @@
 
 
 </head>
-<body onload="preload();">
+<body onload="alert('body load'); preload(); ">
 <div style="margin-top:100px; text-align:center">
     <img id="sceneimg" src="scene0.png" alt="Stick Figure Adventure" /><br />
     <div id="scenetext"></div><br>
