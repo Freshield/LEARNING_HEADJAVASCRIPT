@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+	<meta charset="UTF-8">
+	<title>Stick Figure Adventure</title>
+    <style type="text/css">
+        span.decision {
+            font-weight:bold;
+            border:thin solid #000000;
+            padding:5px;
+            background-color:#DDDDDD;
+        }
+
+        span.decisionhover {
+            font-weight:bold;
+            border:thin solid #000000;
+            padding:5px;
+            background-color:#EEEEEE;
+        }
+    </style>
+    <script type="text/javascript">
+
+
+
+        var curScene = 0;
+        var Imgs = new Array(10);
+        var imageIndex = 0;
+        //preload image
+        function preload(){
+            for(var i = 0;i<Imgs.length;i++){
+                Imgs[i] = new Image();
+                downloading(i);
+
+            }
+
+            document.getElementById("sceneimg").src =Imgs[0].src;
+        }
+        //downloading one image
+        function downloading(i){
+            imageIndex = i;
+            Imgs[i].src = "scene"+imageIndex+".png";
+            Imgs[i].onload = validateImages(i);
+        }
+
+        //validate if load success
+        function validateImages(i){
+            if(!Imgs[i].complete){
+                window.setTimeout('downloading('+i+')',200);
+            }
+            else if(typeof Imgs[i].naturalWidth != "undefined" && Imgs[i].naturalWidth == 0){
+                window.setTimeout('downloading('+i+')',200);
+            }
+            else{
+
+            }
+        }
+
+
+        function changeScene(decision){
+            var sceneDesc = document.getElementById("scenetext");
+            var message = "";
+            var Tdecision1 = "Welcome";
+            var Tdecision2 = "To Game";
+            var button1 = document.getElementById("decision1");
+            var button2 = document.getElementById("decision2");
+
+            switch(curScene){
+                case 0:
+                    curScene = 1;
+                    message = "Your journey begins at a fork in the road.";
+                    Tdecision1 = "Take the path";
+                    Tdecision2 = "Take the bridge";
+                    break
+                case 1:
+                    if(decision == 1){
+                        curScene = 2;
+                        message = "You have arrived at a cute little house in the woods.";
+                        Tdecision1 = "Walk Around";
+                        Tdecision2 = "Knock the door";
+
+                    }
+                    else{
+                        curScene = 3;
+                        message = "You are standing on the bridge overlooking a peaceful stream.";
+                        Tdecision1 = "Across Bridge";
+                        Tdecision2 = "Gaze into Stream";
+                    }
+                    break
+                case 2:
+                    if (decision == 1) {
+                        curScene = 4;
+                        message = "Peeking through the window, you see a witch inside the house.";
+                    }
+                    else {
+                        curScene = 5;
+                        message = "Sorry, a witch lives in the house and you just became part of her stew.";
+                        Tdecision1 = "Game";
+                        Tdecision2 = "Over";
+                    }
+                    break
+                case 3:
+                    if (decision == 1) {
+                        curScene = 6;
+                        message = "Sorry, a troll lives on the other side of the bridge and you just became his lunch.";
+                        Tdecision1 = "Game";
+                        Tdecision2 = "Over";
+                    }
+                    else {
+                        curScene = 7;
+                        message = "Your stare is interrupted by the arrival of a huge troll.";
+                    }
+                    break
+                case 4:
+                    if (decision == 1) {
+                        curScene = 8;
+                        message = "To be continued";
+                        Tdecision1 = "To be";
+                        Tdecision2 = "Continued";
+                    }
+                    else {
+                        curScene = 5;
+                        message = "Sorry, you became part of the witch's stew.";
+                        Tdecision1 = "Game";
+                        Tdecision2 = "Over";
+                    }
+                    break
+                case 5:
+                    curScene = 0;
+                    message = "";
+                    break
+                case 6:
+                    curScene = 0;
+                    message = "";
+                    break
+                case 7:
+                    if (decision == 1) {
+                        curScene = 6;
+                        message = "Sorry, you became the troll's tasty lunch.";
+                        Tdecision1 = "Game";
+                        Tdecision2 = "Over";
+                    }
+                    else {
+                        curScene = 9;
+                        message = "To be continued";
+                        Tdecision1 = "To be";
+                        Tdecision2 = "Continued";
+                    }
+                    break
+                case 8:
+//TO BE CONTINUED
+                    curScene = 0;
+                    message = "";
+                    break
+                case 9:
+//TO BE CONTINUED
+                    curScene = 0;
+                    message = "";
+                    break
+            }
+
+
+            document.getElementById("sceneimg").src = "scene" + curScene + ".png";
+
+            replaceNodeText("scenetext",message);
+            replaceNodeText("decision1",Tdecision1);
+            replaceNodeText("decision2",Tdecision2);
+
+            //button1.value = Tdecision1;
+            //button2.value = Tdecision2;
+
+
+        }
+
+        function replaceNodeText(id,newText){
+            var node = document.getElementById(id);
+            while(node.firstChild){
+                node.removeChild(node.firstChild);
+            }
+            node.appendChild(document.createTextNode(newText));
+        }
+
+
+    </script>
+
+
+
+</head>
+<body onload="preload();">
+<div style="margin-top:100px; text-align:center">
+    <img id="sceneimg" src="scene0.png" alt="Stick Figure Adventure" /><br />
+    <div id="scenetext"></div><br>
+    <span id="vivi" onclick="window.location.href='vivi.html'"> Please</span> Please choose:
+    <!--<input type="button" id="decision1" value="Welcome" onclick="changeScene(1)" />-->
+    <!--<input type="button" id="decision2" value="To Game" onclick="changeScene(2)" />-->
+    <span id="decision1" class="decision" onclick="changeScene(1)"
+        onmouseover="this.className = 'decisionhover'"
+        onmouseout="this.className = 'decision'">Start</span>
+    <span id="decision2" class="decision" onclick="changeScene(2)"
+          onmouseover="this.className = 'decisionhover'"
+          onmouseout="this.className = 'decision'">Game</span>
+</div>
+
+</body>
+</html>

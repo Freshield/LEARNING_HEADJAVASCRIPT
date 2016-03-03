@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Stick Figure Adventure</title>
+    <script type="text/javascript">
+        var curScene = 0;
+        var Imgs = new Array(10);
+        var imageIndex = 0;
+        //preload image
+        function preload(){
+            for(var i = 0;i<Imgs.length;i++){
+                Imgs[i] = new Image();
+                downloading(i);
+
+            }
+
+            document.getElementById("sceneimg").src =Imgs[0].src;
+        }
+
+
+
+        //downloading one image
+        function downloading(i){
+            imageIndex = i;
+            Imgs[i].src = "cnscene"+imageIndex+".png";
+            Imgs[i].onload = validateImages(i);
+        }
+
+        //validate if load success
+        function validateImages(i){
+            if(!Imgs[i].complete){
+                window.setTimeout('downloading('+i+')',200);
+            }
+            else if(typeof Imgs[i].naturalWidth != "undefined" && Imgs[i].naturalWidth == 0){
+                window.setTimeout('downloading('+i+')',200);
+            }
+            else{
+
+            }
+        }
+
+        function changeScene(decision){
+
+            var message = "";
+
+            switch(curScene){
+                case 0:
+                    curScene = 1;
+                    message = "你走在乡间的小路上";
+                    break
+                case 1:
+                    if(decision == 1){
+                        curScene = 2;
+                        message = "你到达了一个小木屋";
+                    }
+                    else{
+                        curScene = 3;
+                        message = "你站在桥上看着平静的溪流";
+                    }
+                    break
+                case 2:
+                    if (decision == 1) {
+                        curScene = 4;
+                        message = "透过窗户你看到了一个女巫";
+                    }
+                    else {
+                        curScene = 5;
+                        message = "哈 你被女巫拿来煮汤了";
+                    }
+                    break
+                case 3:
+                    if (decision == 1) {
+                        curScene = 6;
+                        message = "哈 一个怪物在桥对面 你被当成午餐了";
+                    }
+                    else {
+                        curScene = 7;
+                        message = "你面前有一个庞然大物";
+                    }
+                    break
+                case 4:
+                    if (decision == 1) {
+                        curScene = 8;
+                    }
+                    else {
+                        curScene = 5;
+                        message = "哈 你被女巫煮汤了";
+                    }
+                    break
+                case 5:
+                    curScene = 0;
+                    break
+                case 6:
+                    curScene = 0;
+                    break
+                case 7:
+                    if (decision == 1) {
+                        curScene = 6;
+                        message = "哈 你被当成怪物的午餐了";
+                    }
+                    else {
+                        curScene = 9;
+                    }
+                    break
+                case 8:
+//TO BE CONTINUED
+                    curScene = 0;
+                    break
+                case 9:
+//TO BE CONTINUED
+                    curScene = 0;
+                    break
+            }
+
+            document.getElementById("sceneimg").src =Imgs[curScene].src; //"cnscene" + curScene + ".png";
+            if(message != ""){
+                alert(message);
+            }
+
+
+        }
+
+
+    </script>
+
+
+
+</head>
+<body onload="preload();">
+<div style="margin-top:100px; text-align:center">
+    <img id="sceneimg" src="cnscene0.png" alt="Stick Figure Adventure" /><br />
+    Please choose:
+    <input type="button" id="decision1" value="1" onclick="changeScene(1)" />
+    <input type="button" id="decision2" value="2" onclick="changeScene(2)" />
+</div>
+
+</body>
+</html>
