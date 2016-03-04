@@ -10,12 +10,13 @@
             this.date = date;
         }
         //create Blog object
-        var blog = [new Blog("Got the new cub I ordered...","08/14/2008"),
-                    new Blog("Solved the new cube but of course, now I'm bored and shooping for a new one.","08/19/2008"),
-                    new Blog("Managed to get a headache tolling over the new cube.","08/16/2008"),
-                    new Blog("Found a 7x7x7 cube for sale online. Yikes! That one could be a beast.","08/21/2008")];
+        var blog = [new Blog("Got the new cub I ordered...",new Date("08/14/2008")),
+                    new Blog("Solved the new cube but of course, now I'm bored and shooping for a new one.",new Date("08/19/2008")),
+                    new Blog("Managed to get a headache tolling over the new cube.",new Date("08/16/2008")),
+                    new Blog("Found a 7x7x7 cube for sale online. Yikes! That one could be a beast.",new Date("08/21/2008"))];
 
         function showBlog(numEntries){
+
             if(!numEntries){
                 numEntries = blog.length;
             }
@@ -28,11 +29,15 @@
                     blogText += "<p>";
                 }
 
-                blogText += "<strong>" + blog[i].date + "</strong><br>"+blog[i].body + "</p>";
+                blogText += "<strong>" +
+                    blog[i].date.getMonth()+"/"+blog[i].date.getDate()+"/"
+                    +blog[i].date.getFullYear() + "</strong><br>"+blog[i].body + "</p>";
 
                 i++;
             }
+
             document.getElementById("blog").innerHTML = blogText;
+
         }
     </script>
 </head>
