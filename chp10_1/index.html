@@ -4,6 +4,11 @@
     <meta charset="UTF-8">
     <title>YouCube - The Blog for Cube Puzzlers</title>
     <script type="text/javascript">
+
+        Date.prototype.shortFormat = function(){
+            return ((this.getMonth()+1)+"/"+
+            this.getDate()+"/"+this.getFullYear());
+        }
         //object Blog
         function Blog(body,date){
             this.body = body;
@@ -14,20 +19,20 @@
         }
 
         Blog.prototype.toString = function(){
-            return ("["+(this.date.getMonth()+1)+"/"+
-            this.date.getDate()+"/"+this.date.getFullYear()+"]"+
-            this.body);
+            return ("["+this.date.shortFormat()+"]"+
+            this.body+"\n"+"by "+this.signature);
         }
 
         Blog.prototype.toHTML = function(highlight){
             var blogHTML = "";
             blogHTML += highlight ? "<p style='background-color:#EEEEEE'>" : "<p>";
 
-            blogHTML += "<strong>" + (this.date.getMonth()+1) + "/" +
-                this.date.getDate()+"/"+this.date.getFullYear()+"</strong><br>"+
-                this.body+"</p>";
+            blogHTML += "<strong>" +this.date.shortFormat()+"</strong><br>"+
+                this.body+"<br><em>"+"by "+this.signature+"</em></p>";
             return blogHTML;
         }
+
+        Blog.prototype.signature = "Puzzler Ruby";
 
         //create Blog object
         var blog = [new Blog("Got the new cub I ordered...",new Date("08/14/2008")),
