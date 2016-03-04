@@ -60,6 +60,12 @@
 
         }
 
+        function showRandom(){
+            var i = Math.floor(Math.random()*blog.length);
+            alert("["+(blog[i].date.getMonth()+1)+"/"+
+                blog[i].date.getDate()+"/"+blog[i].date.getFullYear()+"]"+
+                blog[i].body);
+        }
 
     </script>
 </head>
@@ -70,6 +76,7 @@
     <input type="text" id="searchText" name="searchtext" value="">
     <div id="blog"></div>
     <input type="button" id="showall" value="Show ALL Blog Entries" onclick="showBlog();">
+    <input type="button" id="showrandom" value="View a Random Blog Entry" onclick="showRandom();">;
 
 
 </body>
