@@ -8,6 +8,26 @@
         function Blog(body,date){
             this.body = body;
             this.date = date;
+
+            this.containsText = function(text){
+                return (this.body.toLowerCase().indexOf(text.toLowerCase()));
+            }
+
+            this.toString = function(){
+                return ("["+(this.date.getMonth()+1)+"/"+
+                    this.date.getDate()+"/"+this.date.getFullYear()+"]"+
+                    this.body);
+            }
+
+            this.toHTML = function(highlight){
+                var blogHTML = "";
+                blogHTML += highlight ? "<p style='background-color:#EEEEEE'>" : "<p>";
+
+                blogHTML += "<strong>" + (this.date.getMonth()+1) + "/" +
+                        this.date.getDate()+"/"+this.date.getFullYear()+"</strong><br>"+
+                        this.body+"</p>";
+                return blogHTML;
+            }
         }
         //create Blog object
         var blog = [new Blog("Got the new cub I ordered...",new Date("08/14/2008")),
@@ -47,24 +67,20 @@
                 return 0;
             }
             for(var i = 0;i<blog.length;i++){
-                if(blog[i].body.toLowerCase().indexOf(searchtext.toLowerCase()) != -1){
-                    alert("["+(blog[i].date.getMonth()+1)+"/"+
-                    blog[i].date.getDate()+"/"+blog[i].date.getFullYear()+"]"+
-                    blog[i].body);
+                if(blog[i].containsText(searchtext) != -1){
+                    alert(blog[i].toString());
                     break;
                 }
-                if(i == blog.length){
-                    alert("Sorry, there are no blog entries containing the search text.");
-                }
-            }
 
+            }
+            if(i >= blog.length){
+                alert("Sorry, there are no blog entries containing the search text.");
+            }
         }
 
         function showRandom(){
             var i = Math.floor(Math.random()*blog.length);
-            alert("["+(blog[i].date.getMonth()+1)+"/"+
-                blog[i].date.getDate()+"/"+blog[i].date.getFullYear()+"]"+
-                blog[i].body);
+            alert(blog[i].toString());
         }
 
     </script>
