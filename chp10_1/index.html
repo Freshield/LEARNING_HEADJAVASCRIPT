@@ -32,6 +32,10 @@
             return blogHTML;
         }
 
+        Blog.blogSorter = function(blog1,blog2){
+            return blog2.date - blog1.date;
+        }
+
         Blog.prototype.signature = "Puzzler Ruby";
 
         //create Blog object
@@ -41,7 +45,7 @@
             new Blog("Found a 7x7x7 cube for sale online. Yikes! That one could be a beast.",new Date("08/21/2008"))];
 
         function showBlog(numEntries){
-            blog.sort(function(blog1,blog2){return blog2.date - blog1.date;});
+            blog.sort(Blog.blogSorter);
             if(!numEntries){
                 numEntries = blog.length;
             }
