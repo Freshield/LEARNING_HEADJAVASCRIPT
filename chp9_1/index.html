@@ -30,13 +30,33 @@
                 }
 
                 blogText += "<strong>" +
-                    blog[i].date.getMonth()+"/"+blog[i].date.getDate()+"/"
+                    (blog[i].date.getMonth()+1)+"/"+blog[i].date.getDate()+"/"
                     +blog[i].date.getFullYear() + "</strong><br>"+blog[i].body + "</p>";
 
                 i++;
             }
 
             document.getElementById("blog").innerHTML = blogText;
+
+        }
+
+        function searchBlog(){
+            var searchtext = document.getElementById("searchText").value;
+            if(searchtext == ""){
+
+                return 0;
+            }
+            for(var i = 0;i<blog.length;i++){
+                if(blog[i].body.toLowerCase().indexOf(searchtext.toLowerCase()) != -1){
+                    alert("["+(blog[i].date.getMonth()+1)+"/"+
+                    blog[i].date.getDate()+"/"+blog[i].date.getFullYear()+"]"+
+                    blog[i].body);
+                    break;
+                }
+                if(i == blog.length){
+                    alert("Sorry, there are no blog entries containing the search text.");
+                }
+            }
 
         }
 
